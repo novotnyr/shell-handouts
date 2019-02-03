@@ -18,3 +18,7 @@ Stiahnite si
 ------------
 - [vizitkár ako PDF](https://github.com/novotnyr/shell-handouts/blob/master/latex/shell-business-cards-nup.pdf). Na jednej strane A4 je 10 štandardných vizitiek. Stačí vytlačiť a orezať!
 - [PDF](https://github.com/novotnyr/shell-handouts/blob/master/latex/shell-business-cards.pdf), kde je každá strana ako vizitka 5x9 cm.
+
+Ukážka vizitky
+---------------
+![screenshot.png](screenshot.png)
