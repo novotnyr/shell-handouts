@@ -49,6 +49,8 @@
 {obsah}{Verbatim}
 {commandchars=\\\{\}}
 
+\newtcolorbox{bottomcolorbox}{sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, bottomrule=0mm, grow to right by=3mm, enlarge bottom by=-1mm}
+\newtcolorbox{middlecolorbox}{sharp corners, grow to left by=3mm, grow to right by=3mm,leftrule=0mm, rightrule=0mm,  enlarge bottom by=-1mm}
 \begin{document}
 %-------------------------
 \begin{karticka}{echo}
@@ -66,52 +68,52 @@ echo 'Hello World'
 \begin{obsah}
 výpis obsahu súboru na štandardný výstup
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 cat /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{wc}
 \begin{obsah}
 počet riadkov / slov / znakov / bajtov
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 wc -l /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{head}
 \begin{obsah}
 prvých \emph{N} riadkov súboru
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 head -n 10 /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{tail}
 \begin{obsah}
 posledných \emph{N} riadkov súboru
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 tail -n 10 /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 od \emph{N}-tého riadka do konca
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 tail -n +10 /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 
 \end{karticka}
 %-------------------------
@@ -119,22 +121,22 @@ tail -n +10 /etc/passwd
 \begin{obsah}
 vysekávanie políčok podľa jednoznakového oddeľovača
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 cut -d: -f1 /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{grep}
 \begin{obsah}
 vyhľadávanie a filtrovanie riadkov podľa regulár. výrazu
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 grep '^john' /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 
 \begin{obsah}
 \Em{-v} riadky bez zhody     \Em{-E} rozšírený regex
@@ -147,11 +149,11 @@ grep '^john' /etc/passwd
 vylepšený cut s podporou viacerých oddeľovačov a 
 pokročilých funkcií
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 awk -F: '{ print $1 }' /etc/passwd 
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 \Em{-F} znaky oddeľovačov    
 \Em{$1} prvé políčko v riadku
@@ -163,22 +165,22 @@ awk -F: '{ print $1 }' /etc/passwd
 \begin{obsah}
 očíslovanie riadkov
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 nl hello.c
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{sed}
 \begin{obsah}
 nahrádzanie textu v riadkoch
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 sed 's/root/admin/g' users.txt
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 \Em{g} nahrádzanie všetkých výskytov v riadku
 \Em{-E} zapne rozšírené regexy (GNU)
@@ -190,11 +192,11 @@ sed 's/root/admin/g' users.txt
 \begin{obsah}
 nahrádzanie jednotlivých znakov, mazanie znakov
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 tr '_' '-' < files.txt
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 \Em{-d} odstráni uvedené znaky
 \end{obsah}
@@ -205,11 +207,11 @@ tr '_' '-' < files.txt
 \begin{obsah}
 triedenie podľa položiek
 \end{obsah}
-\begin{tcolorbox}[sharp corners]
+\begin{middlecolorbox}
 \begin{Verbatim}
 sort -t: -k3n /etc/passwd
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 \Em{-t} oddeľovač políčok
 \Em{-k} triedené políčko  \Em{n} číselné triedenie
@@ -222,11 +224,9 @@ sort -t: -k3n /etc/passwd
 zjednotí duplicitné riadky v zotriedenom vstupe
 \end{obsah}
 \vfill
-\begin{tcolorbox}[sharp corners,grow to left by=3mm, grow to right by=3mm, enlarge bottom by=-1mm]
-\begin{Verbatim}
+\begin{bottomcolorbox}
 sort names.txt | uniq
-\end{Verbatim}
-\end{tcolorbox}
+\end{bottomcolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{printf}
@@ -235,29 +235,29 @@ sort names.txt | uniq
 - formátovaný výpis textu
 \end{obsah}
 \vfill
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, bottomrule=0mm, grow to right by=3mm, enlarge bottom by=-1mm]
+\begin{bottomcolorbox}
 \begin{Verbatim}
 printf 'Pouzivatel %s byva v %s \n' john /home/john
 \end{Verbatim}
-\end{tcolorbox}
+\end{bottomcolorbox}
 \end{karticka}
 %-------------------------
 %-------------------------
 \begin{karticka}{Nový skript}
 - uvedený riadkom shebang 
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm,leftrule=0mm, rightrule=0mm,  enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 \begin{Verbatim}
 #!/bin/sh
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \par\vspace{1em}
 - s atribútom executable
 
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 \begin{Verbatim}
 chmod +x skript.sh
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{POSIX Shell}
@@ -329,9 +329,9 @@ then
 \end{karticka}
 %-------------------------
 \begin{karticka}{Premenné: čítanie}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 echo "\$HOME"
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 - uvedená dolárom
 - obalená úvodzovkami
@@ -339,9 +339,9 @@ echo "\$HOME"
 \end{karticka}
 %-------------------------
 \begin{karticka}{Premenné: zápis}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm, enlarge bottom by=-3mm]
+\begin{middlecolorbox}
 MENO='Grace Hopper'
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 - reťazce do apostrofov
 - žiadne medzery okolo \Em{=}
@@ -350,9 +350,9 @@ MENO='Grace Hopper'
 \end{karticka}
 %-------------------------
 \begin{karticka}{Premenné: z výstupu príkazu}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm, enlarge bottom by=-3mm]
+\begin{middlecolorbox}
 USERS="\$(\hl{wc -l < /etc/passwd})"
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 - \hl{\$(...)} zachytí štandardný výstup príkazu
 - uvedieme do úvodzoviek
@@ -382,12 +382,12 @@ USERS="\$(\hl{wc -l < /etc/passwd})"
 \end{karticka}
 %-------------------------
 \begin{karticka}{Cyklus for}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm, enlarge bottom by=-3mm]
+\begin{middlecolorbox}
 for\VISIBLESPACE{}X\VISIBLESPACE{}in\VISIBLESPACE{}\Em{slová oddelené bielym miestom}\\
 do\\
 \phantom{XX}echo "\$X"\\
 done
-\end{tcolorbox}
+\end{middlecolorbox}
 \par\vskip6pt
 Ak sa \Em{in slová oddelené bielym miestom} vynechajú, \\
 iteruje sa cez argumenty
@@ -420,9 +420,9 @@ done
 \end{karticka}
 %------------
 \begin{karticka}{find -- vyhľadávanie v podadesároch}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm]
+\begin{middlecolorbox}
 find . -name '*.c'
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{tabular}{ll}
 \Em{.} & odkiaľ začať\\
 \Em{-name \hl{'*.c'}} & podmienka\\
@@ -435,20 +435,20 @@ find . -name '*.c'
 %------------
 \begin{karticka}{Spracovanie súborov}
 \textbf{wc} s viacerými argumentami
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm]
+\begin{middlecolorbox}
 find . -exec \Em{wc -l \{\} +}
-\end{tcolorbox}
+\end{middlecolorbox}
 %
 \textbf{wc} 1x pre každý súbor (staré, pomalé)
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm]
+\begin{middlecolorbox}
 find . -exec \Em{wc -l \{\} \textbackslash; }
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %------------
 \begin{karticka}{Riadky zo vstupu: xargs}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm]
+\begin{middlecolorbox}
 seq 5 | xargs -I \% \Em{touch 'file\%.txt'}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 - Pre každý riadok zo vstupu sa vykoná príkaz. 
 - Znak \Em{%} sa postupne nahrádza riadkom zo vstupu
@@ -459,13 +459,13 @@ seq 5 | xargs -I \% \Em{touch 'file\%.txt'}
 %------------
 \begin{karticka}{xargs folklór}
 Alternatíva pre \textbf{find/exec}:
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm]
+\begin{middlecolorbox}
 find . | xargs -I \% basename \%
-\end{tcolorbox}
+\end{middlecolorbox}
 Spracovanie slov zo vstupu:
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm]
+\begin{middlecolorbox}
 < mena.txt xargs printf '\%s@bigcompany.com'
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------------
 \begin{karticka}{Cyklus while}
@@ -639,9 +639,9 @@ Odsekne najdlhšiu predponu
 \end{karticka}
 %-------------------------
 \begin{karticka}{Triky s \&\&}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 príkaz1 \&\& príkaz2
-\end{tcolorbox}
+\end{middlecolorbox}
 \centering príkaz2 sa vykoná, len ak príkaz1 uspeje
 
 \begin{table}[h!]\centering
@@ -655,9 +655,9 @@ OK   & \&\& & FAIL & = & FAIL
 \end{karticka}
 %-------------------------
 \begin{karticka}{Triky s ||}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 príkaz1 || príkaz2
-\end{tcolorbox}
+\end{middlecolorbox}
 \centering príkaz2 sa vykoná, ak príkaz1 zlyhá
 
 \begin{table}[h!]\centering
@@ -732,23 +732,23 @@ X=\$(príkaz) & zachytenie príkazu do premennej
 %-------------------------
 \begin{karticka}{Awk}
 Pre každý riadok spĺňajúci \textbf{predpis} sa vykoná \textbf{akcia}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 predpis \{ akcia \}
-\end{tcolorbox}
+\end{middlecolorbox}
 Spustenie:
 
 \begin{minipage}{4.3cm}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=0mm, leftrule=0mm, rightrule=0.5mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 awk -F\Em{':'} '\{print \}'
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{minipage}
 %
 \hfill
 %
 \begin{minipage}{4.5cm}
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 awk -F\Em{':'} -f skript.awk
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{minipage}
 
 \Em{-F}: oddeľovač políčok
@@ -827,15 +827,15 @@ awk rozpoznáva reťazce v úvodzovkách,
 \def\CRLF{\\[3pt]}
 %
 Cyklus:
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
   for (i = 0; i < NF; i++) \{ print i \}
-\end{tcolorbox}
+\end{middlecolorbox}
 
 Podmienka:
 
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
   if ( COUNT > 0 ) \{ print "OK" \}
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 %-------------------
 \begin{karticka}{Programovanie awk}
@@ -843,17 +843,17 @@ Podmienka:
 \def\CRLF{\\[3pt]}
 %
 Funkcia
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
   function sucet(x,y) { return x + y }
   sucet(2+3)
-\end{tcolorbox}
+\end{middlecolorbox}
 
 Polia:
 
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
   a["John"] = 1       \\
   a[0] = 1
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{karticka}
 
 %-------------------
@@ -872,9 +872,9 @@ Polia:
 \end{karticka}
 %-------------------
 \begin{karticka}{[s]ubstitute - nahraď}
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
   s/\Em{čo}/\Em{čím}/g
-\end{tcolorbox}
+\end{middlecolorbox}
 \Em{čo} BRE regex. Pozor na obmedzenú syntax!\\
 \Em{čím} BRE regex\\
 \Em{g} nahrádzanie všetkých výskytov\\
@@ -905,9 +905,9 @@ s/:/;/g     – hromadné nahradenie
 \end{karticka}
 %-------------------
 \begin{karticka}{Adresy}
-\begin{tcolorbox}[sharp corners, grow to left by=2mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 adresa1,adresa2\Em{príkaz}
-\end{tcolorbox}
+\end{middlecolorbox}
 \begin{obsah}
 adresa: 
 - číslo riadku. Posledný riadok: \Em{\$}
@@ -965,29 +965,29 @@ zamení riadok začínajúci mriežkou za čiaru
 \end{karticka}
 %-------------------
 \begin{karticka}{Viacriadkové skripty pre sed}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 sed -e \Em{'s/pes/dog/'} -e \Em{'s/vlk/wolf/'}
-\end{tcolorbox}
+\end{middlecolorbox}
 Riadok postupne putuje príkazmi.
 \end{karticka}
 %-------------------
 \begin{karticka}{Externé skripty pre sed}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
 \begin{Verbatim}
 1,3 {
   s/pes/dog/
   s/vlk/wolf
 }
 \end{Verbatim}
-\end{tcolorbox}
+\end{middlecolorbox}
 \par\medskip
 V súboroch. Zavádzame parametrom \Em{-f}
 \vfill
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, bottomrule=0mm, grow to right by=3mm, enlarge bottom by=-1mm]
+\begin{bottomcolorbox}
 \begin{Verbatim}
 sed -f skript.sed
 \end{Verbatim}
-\end{tcolorbox}
+\end{bottomcolorbox}
 \end{karticka}
 %-------------------
 \begin{karticka}{sed - zriedkavé príkazy}
