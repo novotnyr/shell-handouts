@@ -1,1 +1,1 @@
-Viď docs/index.markdown
+Viď https://novotnyr.github.io/shell-handouts
