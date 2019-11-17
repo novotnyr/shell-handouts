@@ -19,7 +19,9 @@
 
 \setromanfont{CamingoCode}
 \setsansfont{CamingoCode}
-\setmonofont{CamingoCode}
+
+\defaultfontfeatures{} % reset for mono font
+\setmonofont[Ligatures=NoCommon]{CamingoCode}
 
 \newfontfamily\Courier{Courier}%
 \setlength{\unitlength}{1cm}
@@ -356,7 +358,7 @@ MENO='Grace Hopper'
 %-------------------------
 \begin{karticka}{Premenné: z výstupu príkazu}
 \begin{middlecolorbox}
-USERS="\$(\hl{wc -l < /etc/passwd})"
+\texttt{USERS="\$(\hl{wc -l < /etc/passwd})"}
 \end{middlecolorbox}
 \begin{obsah}
 - \hl{\$(...)} zachytí štandardný výstup príkazu
