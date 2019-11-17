@@ -545,14 +545,15 @@ done < mena.txt
 \end{karticka}
 %-------------------------
 \begin{karticka}{Funkcie}
+\begin{middlecolorbox}
 \begin{Verbatim}
 to_upper() {
   echo "$1" | tr [:lower:] [:upper:]
 }
 \end{Verbatim}
+\end{middlecolorbox}
 \begin{obsah}
-- \Em{$1}, \Em{$2}... argumenty funkcie
-- argumenty sú stringové
+- \Em{$1}, \Em{$2}... stringové argumenty funkcie
 - návratová hodnota: výhradne číselný exit kód 
   (cez \Em{return})
 - môže komunikovať cez stdin/stdout/stderr
