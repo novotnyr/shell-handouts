@@ -526,20 +526,23 @@ read -r LINE
 \end{Verbatim}
 \newpage
 %-------------------------
-\Heading{while/read}
+\begin{karticka}{while/read}
 \begin{Verbatim}[commandchars=\\\{\}]
-- načítavanie súboru po riadkoch
-- \Em{while} iteruje, kým \Em{read} nevráti nenulový 
-  exit kód
-- načítavame aj do viacerých premenných pre dáta
-  oddelené medzerou
+- načítavanie riadkov súboru do premenných
+- políčka oddelené medzerou alebo obsahom premennej IFS
+- \Em{while} iteruje, ak \Em{read} vracia nulový exit kód
 - konvencia: dáta nesmú ísť z rúry, ale súboru!
-
-while \EM{read -r MENO PRIEZVISKO}
+\end{Verbatim}
+%
+\begin{middlecolorbox}
+\begin{Verbatim}[commandchars=\\\{\}]
+while\VISIBLESPACE\Em{IFS=:}\VISIBLESPACE\Em{read -r MENO PRIEZVISKO}
 do
    echo "$MENO, $PRIEZVISKO"
 done < mena.txt
 \end{Verbatim}
+\end{middlecolorbox}
+\end{karticka}
 %-------------------------
 \begin{karticka}{Funkcie}
 \begin{Verbatim}
