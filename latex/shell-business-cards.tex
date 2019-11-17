@@ -475,7 +475,7 @@ Alternatíva pre \textbf{find/exec}:
 find . | xargs -I \% basename \%
 \end{middlecolorbox}
 Spracovanie slov zo vstupu:
-\begin{middlecolorbox}
+\begin{middlecolorbox}\ttfamily
 < mena.txt xargs printf '\%s@bigcompany.com'
 \end{middlecolorbox}
 \end{karticka}
@@ -492,12 +492,13 @@ done
 }
 \put(+2,-1){%
 \begin{minipage}{5cm}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, grow to right by=3mm, leftrule=0mm, rightrule=0mm, enlarge bottom by=-1mm]
+\begin{middlecolorbox}
+\ttfamily
 while sleep 3\\
 do\\
 \phantom{XX}echo 'Ping!'\\
 done
-\end{tcolorbox}
+\end{middlecolorbox}
 \end{minipage}
 }
 \end{picture}
