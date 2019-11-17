@@ -35,7 +35,7 @@
 {\begin{center}\bfseries\Large#1\end{center}}%
 }%
 
-\newcommand{\Em}[1]{\Ovalbox{#1}}
+\newcommand{\Em}[1]{\Ovalbox{\ttfamily #1}}
 \newcommand{\EM}[1]{\fbox{#1}}
 
 \def\VISIBLESPACE{{\tiny $\sqcup$}}
@@ -278,7 +278,7 @@ chmod +x skript.sh
 \begin{picture}(2,1)
 \put(0,0){%
 \begin{minipage}{5cm}
-if \Em{exit kód príkazu je nula}\\
+if\VISIBLESPACE\Em{exit kód príkazu je nula}\\
 then\\
 ...\\
 else\\
@@ -401,15 +401,18 @@ iteruje sa cez argumenty
 \end{karticka}
 %-------------------------
 \begin{karticka}{Spracovanie súborov}
-\begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, grow to right by=3mm,top=0mm,bottom=0mm]
-for SUBOR in ./*.tex\\
-do\\
-\phantom{XX}if [ -e "\$SUBOR" ]\\
-\phantom{XX}then\\
-\phantom{XXXX}\hl{spracuj súbor v premennej SUBOR}\\
-\phantom{XX}fi\\
+\vspace*{-3mm}
+\begin{middlecolorbox}
+\begin{Verbatim}[commandchars=+()]
+for SUBOR in ./*.tex
+do
+  if [ -e "$SUBOR" ]
+  then
+    +Em(spracuj súbor v premennej SUBOR)
+  fi
 done
-\end{tcolorbox}
+\end{Verbatim}
+\end{middlecolorbox}
 \Em{./*} pre prípad súborov začínajúcich pomlčkou \\
 \Em{-e} lebo žolíky bez zhody expandujú sami na seba
 \end{karticka}
@@ -419,7 +422,7 @@ done
 \begin{tabular}{ll}
 \Em{.} 		& aktuálny adresár\\
 \Em{..} 		& rodičovský adresár\\
-\Em{~}		& domovský priečinok\\
+\Em{\textasciitilde}		& domovský priečinok\\
 \Em{?}		& žolík pre jeden znak\\
 \Em{*}		& žolík pre viacero znakov\\%
 \Em{[abcd]}	& množina znakov
@@ -510,9 +513,11 @@ done
 \end{karticka}
 %------------------------------
 \Heading{Načítanie riadkov: read}
+\begin{middlecolorbox}
+read -r LINE 
+\end{middlecolorbox}  
+%
 \begin{Verbatim}[commandchars=\\\{\}]
-  read -r LINE 
-
 - načíta do premennej LINE jeden riadok 
   zo stdin
 - ak sa riadok nenačíta, vráti nenulový
@@ -569,15 +574,15 @@ MESSAGE="$(to_upper 'hello')
 
 %-------------------------
 \begin{karticka}{Expanzie}
-\begin{Verbatim}[commandchars=+\[\]]
-+EM[~]       vlnky: domovský priečinok
-               +EM[~ alebo ~root]
-+EM[$( )]    príkazu: zachytenie výstupu príkazu
-               +EM[LOGIN=$(logname)]
-+EM[$(( ))]  aritmetická: základná matematika
-               +EM[I=$((I + 1))]
-+EM[${ }]    premennej: čítanie
-               +EM[echo "${PATH}"]
+\begin{Verbatim}[commandchars=§\[\]]
+§EM[~]       vlnky: domovský priečinok
+               §EM[~ alebo ~root]
+§EM[$( )]    príkazu: zachytenie výstupu príkazu
+               §EM[LOGIN=$(logname)]
+§EM[$(( ))]  aritmetická: základná matematika
+               §EM[I=$((I + 1))]
+§EM[${ }]    premennej: čítanie
+               §EM[echo "${PATH}"]
 \end{Verbatim}
 \end{karticka}
 %-------------------------
@@ -591,7 +596,7 @@ Ak je premenná \Em{1} prázdna:
 \$\{1:=default\}
 &   priradí sa do nej default hodnota
 \\
-\$\{1:?'Chyba premenna'\}
+\texttt{\$\{1:?'Chyba premenna'\}}
 &   skript skončí s chybou a hláškou
 \\
 \$\{\#1\}
@@ -604,7 +609,7 @@ Ak je premenná \Em{1} prázdna:
 \begin{karticka}{Práca s reťazcami}
 \textbf{predpis} je slovo, ktoré môže obsahovať žolíky
 \begin{table}[h!]
-\begin{tabular}{lp{7cm}}
+\begin{tabular}{lp{6cm}}
 \verb|${1%predpis}|
 &
 Odsekne najkratšiu príponu z konca
@@ -613,11 +618,11 @@ Odsekne najkratšiu príponu z konca
 &
 Odsekne najkratšiu predponu zo začiatku
 \\[6pt]
-\verb|${1%%výraz}|
+\verb|${1%%predpis}|
 &
 Odsekne najdlhšiu príponu
 \\[6pt]
-\verb|${1##výraz}|
+\verb|${1##predpis}|
 &
 Odsekne najdlhšiu predponu
 \end{tabular}
@@ -682,7 +687,7 @@ FAIL   & || & FAIL & = & FAIL
 %-------------------------
 \begin{karticka}{Zoznamy príkazov}
 \begin{table}[h!]
-\begin{tabular}{p{3.3cm}|p{5cm}}
+\begin{tabular}{p{3.3cm}|p{4.5cm}}
 \begin{tcolorbox}[sharp corners,left=0mm,right=0mm,leftrule=0mm,rightrule=0mm,toprule=0mm,bottomrule=0mm,enlarge bottom by=-5mm]
 \begin{Verbatim}
 príkaz1;príkaz2
@@ -705,7 +710,7 @@ príkaz1\
 \end{Verbatim}
 \end{tcolorbox}
 &
-Viacero príkazov  
+Viac príkazov  
 sa tvári ako  
 jeden pri 
 presmerovaní  
@@ -748,7 +753,9 @@ Spustenie:
 
 \begin{minipage}{4.3cm}
 \begin{middlecolorbox}
-awk -F\Em{':'} '\{print \}'
+\begin{ttfamily}
+awk -F\Em{':'} '\{ print \}'
+\end{ttfamily}
 \end{middlecolorbox}
 \end{minipage}
 %
@@ -756,7 +763,9 @@ awk -F\Em{':'} '\{print \}'
 %
 \begin{minipage}{4.5cm}
 \begin{middlecolorbox}
+\begin{ttfamily}
 awk -F\Em{':'} -f skript.awk
+\end{ttfamily}
 \end{middlecolorbox}
 \end{minipage}
 
@@ -796,7 +805,7 @@ NR>3,/OK/  & kombinácia
 \verb|$0|     & celý riadok \\
 \verb|$1, $2| atď & obsah položiek na aktuálnom riadku\\
 NR     & poradové číslo riadka\\
-IFS    & oddeľovač políčok (viď `-F`)\\
+IFS    & oddeľovač políčok (viď \Em{-F})\\
 OFS    & oddeľovač políčok na výstupe   \\ 
 NF     & počet položiek v riadku
 \end{tabular}
@@ -842,7 +851,7 @@ Cyklus:
 
 Podmienka:
 
-\begin{middlecolorbox}
+\begin{middlecolorbox}\ttfamily
   if ( COUNT > 0 ) \{ print "OK" \}
 \end{middlecolorbox}
 \end{karticka}
@@ -940,7 +949,7 @@ sed -n 1p    & len 1. riadok. Implicitný
                \\
 \verb|sed -n 1,5p| & prvých 5 riadkov (=head)
 \\
-\verb|sed -n 3,$|   & od 3. riadku do konca
+\verb|sed -n '3,$'|   & od 3. riadku do konca (pozor na \$)
 \\
 \verb|sed -n /#/p|  & len riadky s \# (=grep)
 \end{tabular}
