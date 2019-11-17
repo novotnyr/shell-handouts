@@ -316,14 +316,14 @@ fi
 -d: je to adresár?\\
 -n: neprázdna premenná\\
 -z: prázdna premenná\\
-\phantom{ }=: porovnanie
+\phantom{ }=: porovnanie reťazcov
 \end{tcolorbox}
 \end{minipage}
 }
 \end{picture}
 \vfill
 \begin{tcolorbox}[sharp corners, grow to left by=3mm, leftrule=0mm, rightrule=0mm, bottomrule=0mm, grow to right by=3mm, enlarge bottom by=-1mm]
-if\VISIBLESPACE[\VISIBLESPACE-f /etc/passwd\VISIBLESPACE]
+if\VISIBLESPACE[\VISIBLESPACE-f /etc/passwd\VISIBLESPACE]\\
 then 
 \end{tcolorbox}
 
@@ -331,7 +331,9 @@ then
 %-------------------------
 \begin{karticka}{Premenné: čítanie}
 \begin{middlecolorbox}
-echo "\$HOME"
+\begin{Verbatim}
+echo "$HOME"
+\end{Verbatim}
 \end{middlecolorbox}
 \begin{obsah}
 - uvedená dolárom
@@ -341,7 +343,9 @@ echo "\$HOME"
 %-------------------------
 \begin{karticka}{Premenné: zápis}
 \begin{middlecolorbox}
+\begin{Verbatim}
 MENO='Grace Hopper'
+\end{Verbatim}
 \end{middlecolorbox}
 \begin{obsah}
 - reťazce do apostrofov
@@ -422,7 +426,9 @@ done
 %------------
 \begin{karticka}{find -- vyhľadávanie v podadesároch}
 \begin{middlecolorbox}
+\begin{Verbatim}
 find . -name '*.c'
+\end{Verbatim}
 \end{middlecolorbox}
 \begin{tabular}{ll}
 \Em{.} & odkiaľ začať\\
@@ -845,15 +851,19 @@ Podmienka:
 %
 Funkcia
 \begin{middlecolorbox}
+\begin{Verbatim}
   function sucet(x,y) { return x + y }
   sucet(2+3)
+\end{Verbatim}  
 \end{middlecolorbox}
 
 Polia:
 
 \begin{middlecolorbox}
-  a["John"] = 1       \\
+\begin{Verbatim}
+  a["John"] = 1
   a[0] = 1
+\end{Verbatim}  
 \end{middlecolorbox}
 \end{karticka}
 
